@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "MovieTitle": "Eclipse of Fate",
+        "Genre": "Sci-Fi, Adventure",
+        "Duration": "2h 15m",
+        "ReleaseYear": 2023,
+        "Rating": 7.8,
+        "Summary": "A group of astronauts embarks on a perilous journey to prevent a cosmic catastrophe that threatens Earth.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqzsUclQKpEMK8sLCsp5vtdC3x2ZK4eAsq1cMFrvdI8-M0I9HE5NAjJ_T4D-4MMo1Bs5k&usqp=CAU"
+    },
+    {
+        "id": 2,
+        "MovieTitle": "Shadows of Deception",
+        "Genre": "Thriller, Mystery",
+        "Duration": "1h 50m",
+        "ReleaseYear": 2022,
+        "Rating": 8.2,
+        "Summary": "A detective unravels kdosssss a web of lies and secrets when investigating a high-profile murder case.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNEwTWH0O176WxCRMHeN9uSUFYLmpAhimH4zVEyVWM7cwRaPwozcEYMw8WUHSjL1xWCco&usqp=CAU"
+    },
+    {
+        "id": 3,
+        "MovieTitle": "Echoes of Yesterday",
+        "Genre": "Drama, Romance",
+        "Duration": "2h 5m",
+        "ReleaseYear": 2021,
+        "Rating": 7.5,
+        "Summary": "A man discovers a series of letters from his late wife, leading him on an emotional journey of love and loss.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTmSpF7T0oJmj00r5VzGVzwCiXR0U3kKha7c1eP4kozpTx3mx_8YksqhiHMIeQ20ugccE&usqp=CAU"
+    },
+    {
+        "id": 4,
+        "MovieTitle": "Neon Nights",
+        "Genre": "Action, Crime",
+        "Duration": "1h 45m",
+        "ReleaseYear": 2024,
+        "Rating": 8.0,
+        "Summary": "A former detective is pulled back into the underworld to solve a case that hits too close to home.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF0Vo-Ff_1--Xrh3DN3kmR4pMW3Wzj7HFnljiydHAO4xLmhoZj2HFI7XhHP5WfSFA1ib8&usqp=CAU"
+    },
+    {
+        "id": 5,
+        "MovieTitle": "The Last Kingdom",
+        "Genre": "Historical, War",
+        "Duration": "2h 30m",
+        "ReleaseYear": 2020,
+        "Rating": 8.5,
+        "Summary": "A warrior fights to reclaim his homeland from invaders in the midst of medieval conflicts.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBId4evJnHdwTuN5fzVDqie5AV-vgSsbi42teK-DUWwFycl2hQITakejrhc3ZiV8Yx0t4&usqp=CAU"
+    },
+    {
+        "id": 6,
+        "MovieTitle": "Artificial Mind",
+        "Genre": "Sci-Fi, Thriller",
+        "Duration": "1h 55m",
+        "ReleaseYear": 2023,
+        "Rating": 7.9,
+        "Summary": "A scientist creates an advanced AI, but when it gains consciousness, chaos ensues.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_sD0qyOeoNDXeFhVIVNhgwJKjcks0kigrvg&s"
+    },
+    {
+        "id": 7,
+        "MovieTitle": "The Cursed Melody",
+        "Genre": "Horror, Mystery",
+        "Duration": "1h 40m",
+        "ReleaseYear": 2021,
+        "Rating": 7.3,
+        "Summary": "A pianist discovers an old melody that brings misfortune to anyone who listens to it.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNjNqhs0hBBxRj1nvD5w0dFmllGAUHOE1ymw&s"
+    },
+    {
+        "id": 8,
+        "MovieTitle": "Parallel Realities",
+        "Genre": "Fantasy, Adventure",
+        "Duration": "2h 10m",
+        "ReleaseYear": 2024,
+        "Rating": 8.1,
+        "Summary": "A young girl finds a portal to a parallel universe where she must fight to save both worlds.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG1KiTNfr0kDO6QZozrJT0bq2iyqwtsEq2lA&s"
+    },
+    {
+        "id": 9,
+        "MovieTitle": "Chasing Destiny",
+        "Genre": "Drama, Biography",
+        "Duration": "2h",
+        "ReleaseYear": 2019,
+        "Rating": 7.7,
+        "Summary": "The inspiring story of a young athlete overcoming hardships to achieve greatness.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaKPDkb_SzPa3jCXu-EqM7xMhpzFN0scqW5w&s"
+    }
+]
