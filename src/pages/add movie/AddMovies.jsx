@@ -1,32 +1,64 @@
 
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
-
+import Swal from 'sweetalert2'
 const AddMovies = () => {
-    const [rating, setRating] = React.useState();
+    const [rating, setRating] = React.useState(null);
+
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
+
+        const convertMinutesToHours = (duration) => {
+            const hours = Math.floor(duration / 60);
+            const remainingMinutes = duration % 60;
+            return `${hours}h ${remainingMinutes}m`;
+        };
         const form = e.target
-        console.log(form)
+
         const img = form.poster.value
         const title = form.title.value
         const genre = form.genre.value
         const duration = form.duration.value
+        const resultHours = convertMinutesToHours(duration)
         const year = form.year.value
         const summary = form.summary.value
+        const ratings = rating + 5
+
         const data = {
             img: img,
             title: title,
             genre: genre,
-            duration: duration,
+            duration: resultHours,
             year: year,
-            rating : rating,
+            rating: ratings,
             summary: summary
         }
-        console.log(data)
+        fetch('http://localhost:4000/movies', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                Swal.fire({
+                    title: "Movie added successfully!",
+                    icon: "success",
+                    draggable: true
+                  });
+                console.log(data)
+            }).catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                });
+            })
+        form.reset()
 
 
     }
@@ -39,7 +71,7 @@ const AddMovies = () => {
                     <input
                         type="url"
                         name="poster"
-
+                        required
                         className="w-full p-2 border rounded"
                         placeholder="Enter image URL"
                     />
@@ -49,6 +81,7 @@ const AddMovies = () => {
                 <div>
                     <label className="block font-medium">Movie Title</label>
                     <input
+                        required
                         type="text"
                         name="title"
                         className="w-full p-2 border rounded"
@@ -71,7 +104,7 @@ const AddMovies = () => {
                     <input
                         type="number"
                         name="duration"
-
+                        required
                         className="w-full p-2 border rounded"
                         placeholder="Enter duration"
                     />
@@ -94,6 +127,7 @@ const AddMovies = () => {
                     <label className="block font-medium">Rating</label>
                     <Rating
                         name="simple-controlled"
+                        required
                         value={rating}
                         onChange={(event, newValue) => {
                             setRating(newValue);
@@ -107,7 +141,7 @@ const AddMovies = () => {
                     <label className="block font-medium">Summary</label>
                     <textarea
                         name="summary"
-
+                        required
                         className="w-full p-2 border rounded"
                         placeholder="Enter a short summary"
                     />

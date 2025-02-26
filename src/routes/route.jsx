@@ -8,46 +8,53 @@ import AddMovies from "../pages/add movie/AddMovies";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import UpComingMovies from "../pages/upcoming-movies/UpComingMovies";
 import ErrorPage from "../pages/Error/Error";
+import DetailsMovie from "../components/DetailsMovie";
 
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <App />,
-      children: [
-        {
-          path: "/",
-          element: <Home></Home>,
-          loader: ()=>fetch('data.json')
-        },
-        {
-          path:"/allmovies",
-          element:<Allmovies></Allmovies>,
-          loader:()=> fetch('data.json')
-        },
-        {
-          path:"addmovies",
-          element: <PrivateRoute><AddMovies></AddMovies></PrivateRoute>
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () => fetch('http://localhost:4000/allmovies')
+      },
+      {
+        path: "/allmovies",
+        element: <Allmovies></Allmovies>,
+        loader: () => fetch('http://localhost:4000/allmovies')
+      },
+      {
+        path: "/details/:id",
+        element: <PrivateRoute><DetailsMovie></DetailsMovie></PrivateRoute> ,
+        loader: ({ params }) =>fetch(`http://localhost:4000/allmovies/${params.id}`)
+          
+      },
+      {
+        path: "addmovies",
+        element: <PrivateRoute><AddMovies></AddMovies></PrivateRoute>
 
-        },
-        {
-          path:"upcoming",
-          element: <UpComingMovies></UpComingMovies>
-        },
-        {
-          path:"/login",
-          element: <Login></Login>
+      },
+      {
+        path: "upcoming",
+        element: <UpComingMovies></UpComingMovies>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
 
-        },
-        {
-          path:"/register",
-          element:<Register></Register>
-        }
-      ],
-    },
-    {
-      path: "*",
-      element: <ErrorPage></ErrorPage>
-    }
-  ]);
-  export default router ;
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      }
+    ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>
+  }
+]);
+export default router;
