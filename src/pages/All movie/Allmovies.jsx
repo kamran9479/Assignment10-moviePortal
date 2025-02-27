@@ -6,7 +6,7 @@ const Allmovies = () => {
     const data = useLoaderData()
     return (
         <div className="w-11/12 min-h-lvh mx-auto p-5">
-            <Heading title={"All Movies"} para={'Enjoy all the best movies. there are all the best ratings movies and also latest.watch all movies without and buffering or loading.'}></Heading>
+            <Heading data={data} title={"All Movies"} para={'Enjoy all the best movies. there are all the best ratings movies and also latest.watch all movies without and buffering or loading.'}></Heading>
             {
                 data.length? <div className="grid grid-cols-3 gap-5">
                 {

@@ -1,15 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useLoaderData } from "react-router-dom";
 
-const movies = [
-  { title: "The Dark Knight", image: "https://image.tmdb.org/t/p/w300/qJ2tW6WMUDux911r6m7haRef0WH.jpg", genre: "Action" },
-  { title: "Interstellar", image: "https://image.tmdb.org/t/p/w300/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg", genre: "Sci-Fi" },
-  { title: "Inception", image: "https://image.tmdb.org/t/p/w300/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg", genre: "Drama" },
-  { title: "Avengers: Endgame", image: "https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg", genre: "Superhero" },
-  { title: "Joker", image: "https://image.tmdb.org/t/p/w300/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg", genre: "Thriller" },
-];
 
 export default function UpcomingMovies() {
+    const movies = useLoaderData()
   return (
     <div className=" w-11/12 mx-auto text-white min-h-screen">
      

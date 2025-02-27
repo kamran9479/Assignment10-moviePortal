@@ -10,6 +10,7 @@ import UpComingMovies from "../pages/upcoming-movies/UpComingMovies";
 import ErrorPage from "../pages/Error/Error";
 import DetailsMovie from "../components/DetailsMovie";
 import FavMovies from "../pages/My Favorite/FavMovies";
+import EditDetails from "../pages/editDetails/EditDetails";
 
 
 const router = createBrowserRouter([
@@ -34,18 +35,24 @@ const router = createBrowserRouter([
           
       },
       {
-        path: "addmovies",
+        path: "/addmovies",
         element: <PrivateRoute><AddMovies></AddMovies></PrivateRoute>
 
       },
       {
-        path:'favMovies',
+        path:'/favMovies',
         element:<PrivateRoute><FavMovies></FavMovies></PrivateRoute>,
         loader:()=> fetch('http://localhost:4000/favmovies')
       },
       {
-        path: "upcoming",
-        element: <UpComingMovies></UpComingMovies>
+        path: "/upcoming",
+        element: <UpComingMovies></UpComingMovies>,
+        loader:()=> fetch('movie.json')
+      },
+      {
+        path:"/details/edit/:id",
+        element:<PrivateRoute><EditDetails></EditDetails></PrivateRoute>,
+        loader:async({params})=> fetch(`http://localhost:4000/allmovies/${params.id}`)
       },
       {
         path: "/login",

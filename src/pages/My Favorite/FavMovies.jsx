@@ -4,7 +4,6 @@ import MovieCaard from "../../components/MovieCaard";
 
 const FavMovies = () => {
     const data = useLoaderData()
-    console.log(data)
     return (
         <div className="w-11/12 mx-auto my-10">
             <Heading title={'Favourite Movies'} para={'All favourite movies added here, we know that favourite means all the best movies here'}></Heading>
