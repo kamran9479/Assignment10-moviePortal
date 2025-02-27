@@ -16,7 +16,7 @@ const Navbar = () => {
                         <NavLink className="hover:underline" to="/">Home</NavLink>
                         <NavLink className="hover:underline" to="/allmovies">All Movies</NavLink>
                         <NavLink className="hover:underline" to="/addmovies">Add Movie</NavLink>
-                        <NavLink className="hover:underline" to="/myfavorites">My Favorites</NavLink>
+                        <NavLink className="hover:underline" to="/favMovies">My Favorites</NavLink>
                         <NavLink className="hover:underline" to="/upcoming">Up-Coming</NavLink>
                     </ul>
                 </div>

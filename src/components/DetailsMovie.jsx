@@ -10,17 +10,29 @@ const DetailsMovie = () => {
     const movie = useLoaderData()
     const { title, img, summary, rating, genre, year, duration, _id } = movie;
 
+
+    const handleFav=(id)=>{
+        fetch(`http://localhost:4000/favMovies/${id}`,{
+            method: 'POST',
+        })
+        .then(res=> res.json())
+        .then(result =>{
+            console.log(result)
+        })
+
+    }
+
     const handleDelete = (id) => {
-        console.log(id)
+        
         Swal.fire({
             title: "Confirm Delete ?",
             showCancelButton: true,
             confirmButtonText: "Delete",
             denyButtonText: `Cancel`
         }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
+            
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/allmovies/${_id}`, {
+                fetch(`http://localhost:4000/allmovies/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -49,7 +61,7 @@ const DetailsMovie = () => {
                 <p className="mt-2 text-xl  p-1 ">{summary}</p>
                 <div className="flex gap-4 mt-4">
                     <button onClick={() => handleDelete(_id)} className="bg-red-500 btn border-none hover:text-red-500 text-white px-4 py-2 rounded-lg">Delete Movie</button>
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+                    <button onClick={()=>handleFav(_id)} className="bg-blue-500 text-white px-4 py-2 rounded-lg">
                         Add to Favorite
                     </button>
                 </div>

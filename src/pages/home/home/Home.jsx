@@ -1,16 +1,14 @@
 
-import Banner from "./Banner";
+
 import Featuremovies from "./Featuremovies";
-import Heading from "../../../components/Heading";
+import Banners from "./Banners";
 
 
 const Home = () => {
    
     return (
         <div>
-           
-            <Heading para={"Many movies coming in this year, our team working hard day night for our viewers"} title={"Movie shooting"}></Heading>
-            <Banner></Banner>
+            <Banners></Banners>
             <Featuremovies></Featuremovies>
         </div>
     );

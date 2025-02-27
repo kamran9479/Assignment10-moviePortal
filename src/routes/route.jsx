@@ -9,6 +9,7 @@ import PrivateRoute from "../privateRoute/PrivateRoute";
 import UpComingMovies from "../pages/upcoming-movies/UpComingMovies";
 import ErrorPage from "../pages/Error/Error";
 import DetailsMovie from "../components/DetailsMovie";
+import FavMovies from "../pages/My Favorite/FavMovies";
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
         path: "addmovies",
         element: <PrivateRoute><AddMovies></AddMovies></PrivateRoute>
 
+      },
+      {
+        path:'favMovies',
+        element:<PrivateRoute><FavMovies></FavMovies></PrivateRoute>,
+        loader:()=> fetch('http://localhost:4000/favmovies')
       },
       {
         path: "upcoming",
