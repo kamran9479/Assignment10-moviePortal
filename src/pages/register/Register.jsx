@@ -45,7 +45,7 @@ const Register = () => {
     return (
         <div className='p-5 mb-8'>
 
-            <div className="w-11/12 rounded-xl md:w-6/12 mx-auto text-slate-300 bg-slate-800 p-10">
+            <div className="w-11/12 rounded-xl md:w-6/12 mx-auto  p-10">
                 <form onSubmit={handleSubmit}>
                     <h1 className='text-center text-4xl font-bold'>Register Your Account</h1>
                     <p className='text-center'>Enter your email below to login to your account</p>

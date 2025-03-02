@@ -36,7 +36,7 @@ const Login = () => {
 
 
     return (
-        <div className=" w-11/12 md:w-6/12 grid grid-cols-2 p-6 mx-auto bg-slate-800 text-slate-300 my-8 rounded-2xl ">
+        <div className=" w-11/12 md:w-6/12 grid grid-cols-2 p-6 mx-auto  my-8 rounded-2xl ">
             <h1 className='text-center text-4xl font-bold col-span-2'>Login Form</h1>
             <form onSubmit={handleSubmit}>
 
@@ -45,15 +45,15 @@ const Login = () => {
                     <label className="label">
                         <span className="">Email</span>
                     </label>
-                    <input name='email' type="email" placeholder="email" className="input input-bordered text-slate-950 bg-slate-200" required />
+                    <input name='email' type="email" placeholder="email" className="input input-bordered " required />
                 </div>
                 <div className="form-control relative">
                     <label className="label">
                         <span className="">Password</span>
                     </label>
-                    <input name='password' type={showPass ? 'text' : 'password'} placeholder="password" className="input text-slate-950 bg-slate-200 input-bordered" required />
+                    <input name='password' type={showPass ? 'text' : 'password'} placeholder="password" className="input input-bordered" required />
                     {
-                        showPass ? <FaEyeSlash onClick={() => setShowPass(!showPass)} className="absolute right-2 top-14 text-black size-5"></FaEyeSlash> : <FaEye onClick={() => setShowPass(!showPass)} className="absolute right-2 top-14 text-black size-5"></FaEye>
+                        showPass ? <FaEyeSlash onClick={() => setShowPass(!showPass)} className="absolute right-2 top-14  size-5"></FaEyeSlash> : <FaEye onClick={() => setShowPass(!showPass)} className="absolute right-2 top-14 text-black size-5"></FaEye>
                     }
                     <div className="flex gap-1 p-2 items-center">
                         <input type="checkbox" name="terms" className="checkbox-primary size-5 " required />

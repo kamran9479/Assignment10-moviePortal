@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
+import { url } from "../authProvider/AuthProvider";
 
 
 const MovieCaard = ({ movie, remove }) => {
@@ -8,7 +9,7 @@ const MovieCaard = ({ movie, remove }) => {
     const navigate = useNavigate()
 
     const handleRemove = (id) => {
-        fetch(`http://localhost:4000/favmovies/${id}`, {
+        fetch(`${url}/favmovies/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

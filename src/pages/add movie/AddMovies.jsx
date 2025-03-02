@@ -2,11 +2,12 @@
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
 import Swal from 'sweetalert2'
+import { url } from './../../authProvider/AuthProvider';
 const AddMovies = () => {
     const [rating, setRating] = React.useState(null);
 
 
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -36,7 +37,7 @@ const AddMovies = () => {
             rating: ratings,
             summary: summary
         }
-        fetch('http://localhost:4000/movies', {
+        fetch(`${url}/movies`, {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
@@ -63,7 +64,7 @@ const AddMovies = () => {
 
     }
     return (
-        <div className="max-w-lg my-10 mx-auto p-6 bg-stone-400 text-black shadow-md rounded-lg">
+        <div className="max-w-lg my-10 mx-auto p-6  shadow-md rounded-lg">
             <h2 className="text-xl font-semibold mb-4">Add a Movie</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>

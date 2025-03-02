@@ -3,7 +3,7 @@ import { auth } from './../firebas/firebase.config';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 
 
-
+export const url = import.meta.env.VITE_url
 
 export const authContext = createContext()
 const AuthProvider = ({ children }) => {

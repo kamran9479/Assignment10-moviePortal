@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import './navbar.css'
 import { useContext } from "react";
 import { authContext } from "../../../authProvider/AuthProvider";
+import { Darkmood } from "../../../Darkmood";
 
 const Navbar = () => {
     const { user, handleLogOut } = useContext(authContext)
@@ -21,6 +22,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="col-span-3 justify-end">
+                    <div className="mx-5">
+                        <Darkmood></Darkmood>
+                    </div>
 
                     {
                         user ? <div className="flex justify-center items-center space-x-5">

@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Heading from '../../components/Heading';
-import { div } from 'framer-motion/client';
+import { url } from './../../authProvider/AuthProvider';
+
+
 
 const EditDetails = () => {
     const movie = useLoaderData()
@@ -30,7 +32,7 @@ const EditDetails = () => {
             rating: rating,
             summary: summary
         };
-        fetch(`http://localhost:4000/allMovies/${movie?._id}`, {
+        fetch(`${url}/allMovies/${movie?._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -52,7 +54,7 @@ const EditDetails = () => {
     return (
         <div>
             <Heading title={'Update Movie'} para={"You can easily update movie information"}></Heading>
-            <div className="max-w-lg my-10 mx-auto p-6 bg-stone-400 text-black shadow-md rounded-lg">
+            <div className="max-w-lg my-10 mx-auto p-6  shadow-md rounded-lg">
 
                 <h2 className="text-xl font-semibold mb-4">Update Form</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">

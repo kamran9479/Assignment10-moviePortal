@@ -2,6 +2,7 @@ import React from 'react';
 import Swal from 'sweetalert2'
 import { RxVideo } from 'react-icons/rx';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import { url } from '../authProvider/AuthProvider';
 
 
 const DetailsMovie = () => {
@@ -12,7 +13,7 @@ const DetailsMovie = () => {
 
 
     const handleFav = (id) => {
-        fetch(`http://localhost:4000/favMovies/${id}`, {
+        fetch(`${url}/favMovies/${id}`, {
             method: 'POST',
         })
             .then(res => res.json())
@@ -35,7 +36,7 @@ const DetailsMovie = () => {
             denyButtonText: `Cancel`
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/allmovies/${id}`, {
+                fetch(`${url}/allmovies/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
