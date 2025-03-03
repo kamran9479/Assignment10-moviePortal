@@ -21,7 +21,7 @@ const MovieCaard = ({ movie, remove }) => {
     };
 
     return (
-        <motion.div whileHover={{ scale: 1.05 }} className="bg-zinc-800 pb-2 text-slate-300 shadow-lg rounded-lg overflow-hidden max-w-sm">
+        <motion.div whileHover={{ scale: 1.05 }} className="bg-zinc-800 pb-2 text-slate-300  shadow-lg rounded-2xl overflow-hidden ">
             <img src={movie.img} alt={movie?.title} className="w-full h-56 object-fill" />
             <div className="p-2 grid col-span-2">
                 <h2 className="text-xl col-span-2 font-semibold">{movie?.title}</h2>

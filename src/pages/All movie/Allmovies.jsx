@@ -8,7 +8,7 @@ const Allmovies = () => {
         <div className="w-11/12 min-h-lvh mx-auto p-5">
             <Heading data={data} title={"All Movies"} para={'Enjoy all the best movies. there are all the best ratings movies and also latest.watch all movies without and buffering or loading.'}></Heading>
             {
-                data.length? <div className="grid grid-cols-3 gap-5">
+                data.length? <div className="grid lg:grid-cols-3 gap-5">
                 {
                     data.map(movie => <MovieCaard movie={movie} key={movie.id}></MovieCaard>)
                 }
