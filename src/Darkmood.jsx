@@ -19,11 +19,11 @@ export const Darkmood = () => {
     };
 
     return (
-        <div>
+        <div className='mx-2 '>
             <button onClick={() => toggleTheme()}
-                className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-all"
+                className="h-10 w-10 flex items-center justify-center p-2 rounded-full lg:h-12 lg:w-12 bg-gray-200 dark:bg-gray-800 transition-all"
             >
-                {theme === "light" ? <Moon className='text-yellow-600' size={32} /> : <Sun className='text-red-400' size={32} />}
+                {theme === "light" ? <Moon className='text-yellow-600' size={28} /> : <Sun className='text-red-400' size={28} />}
             </button>
         </div>
     );

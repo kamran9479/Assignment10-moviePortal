@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-    --body_background:white;
+    --body_background:rgb(96, 88, 88);
     --body_color: black;
 }
 
 [data-theme="dark"]{
     --body_background:black;
-    --body_color : white;
+    --body_color : rgba(255, 255, 255, 0.961);
 }

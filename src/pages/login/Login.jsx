@@ -1,91 +1,70 @@
 import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../authProvider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
-    const navigate = useNavigate()
-    const location = useLocation()
-    console.log(location)
-
-    const { handleLogin, logInWithGoogle, errorMsg,setUser } = useContext(authContext)
-    const [showPass, setShowPass] = useState(false)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { handleLogin, logInWithGoogle, errorMsg } = useContext(authContext);
+    const [showPass, setShowPass] = useState(false);
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        const form = e.target
-        const email = form.email.value
-        const password = form.password.value
-        console.log(email, password)
-        handleLogin(email, password)
-        .then(result =>{
-            navigate(location?.state ? location.state : "/")
-        })
-      
-    }
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
 
-    const handleGoogle = ()=>{
+        handleLogin(email, password).then(() => {
+            navigate(location?.state ? location.state : "/");
+        });
+    };
 
-        logInWithGoogle()
-        .then(result =>{
-            
-            navigate(location?.state ? location.state : "/")
-        })
-
-    }
-
+    const handleGoogle = () => {
+        logInWithGoogle().then(() => {
+            navigate(location?.state ? location.state : "/");
+        });
+    };
 
     return (
-        <div className=" w-11/12 md:w-6/12 grid grid-cols-2 p-6 mx-auto  my-8 rounded-2xl ">
-            <h1 className='text-center text-4xl font-bold col-span-2'>Login Form</h1>
-            <form onSubmit={handleSubmit}>
-
-
-                <div className="form-control">
-                    <label className="label">
-                        <span className="">Email</span>
-                    </label>
-                    <input name='email' type="email" placeholder="email" className="input input-bordered " required />
-                </div>
-                <div className="form-control relative">
-                    <label className="label">
-                        <span className="">Password</span>
-                    </label>
-                    <input name='password' type={showPass ? 'text' : 'password'} placeholder="password" className="input input-bordered" required />
-                    {
-                        showPass ? <FaEyeSlash onClick={() => setShowPass(!showPass)} className="absolute right-2 top-14  size-5"></FaEyeSlash> : <FaEye onClick={() => setShowPass(!showPass)} className="absolute right-2 top-14 text-black size-5"></FaEye>
-                    }
-                    <div className="flex gap-1 p-2 items-center">
-                        <input type="checkbox" name="terms" className="checkbox-primary size-5 " required />
-                        <p>Accept our tearms and conditions</p>
+        <div className="flex justify-center items-center p-4">
+            <div className="w-full max-w-md p-6 rounded-lg shadow-md">
+                <h1 className='text-center text-3xl font-bold mb-6'>Login</h1>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="form-control">
+                        <label className="label font-medium">Email</label>
+                        <input name='email' type="email" placeholder="Enter your email" className="input input-bordered w-full p-2 rounded border-gray-300" required />
                     </div>
-                    {
-                        errorMsg && <p className="text-red-400 ">{errorMsg}</p>
-                    }
-                    <label>
-                        <Link to='/forgotpass' className="label underline">Forgot password?</Link>
-                    </label>
+                    <div className="form-control relative">
+                        <label className="label font-medium">Password</label>
+                        <input 
+                            name='password' 
+                            type={showPass ? 'text' : 'password'} 
+                            placeholder="Enter your password" 
+                            className="input input-bordered w-full p-2 rounded border-gray-300" 
+                            required 
+                        />
+                        <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-3 top-12 text-gray-500">
+                            {showPass ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+                        </button>
+                        <div className="flex items-center gap-2 mt-2">
+                            <input type="checkbox" name="terms" className="size-5" required />
+                            <p className="text-sm">Accept our <Link to="/terms" className="text-blue-600 underline">terms and conditions</Link></p>
+                        </div>
+                        {errorMsg && <p className="text-red-500 text-sm mt-2">{errorMsg}</p>}
+                    </div>
+                    <div className="text-right">
+                        <Link to='/forgotpass' className="text-blue-600 text-sm underline">Forgot password?</Link>
+                    </div>
+                    <button className="w-full btn btn-primary py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition">Login</button>
+                </form>
+                <p className='text-center text-sm mt-4'>Don’t have an account? <Link className='text-blue-600 underline' to='/register'>Register</Link></p>
+                <div className="divider my-4">OR</div>
+                <div className="flex flex-col gap-3">
+                    <button onClick={handleGoogle} className='btn w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition'>Continue with Google</button>
+                    <button className='btn w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-900 transition'>Continue with GitHub</button>
                 </div>
-                {/* {
-                    error && <p className='text-red-500'>{error}</p>
-                } */}
-                <div className="form-control mt-6">
-                    <button className="btn btn-primary">Login</button>
-                </div>
-                <p className='text-center p-2'>Dont have an account? <Link className='underline' to='/register'>Register</Link></p>
-            </form>
-            {/* <div className="flex w-full flex-col border-opacity-50">
-                <div className="divider">OR Continue with</div>
-            </div> */}
-            <div className="p-5 flex flex-col justify-center gap-8 text-orange-200">
-                <h1 className="font-semibold text-2xl text-center">Login with </h1>
-                <div className="grid grid-cols-2 gap-3">
-                    <button onClick={handleGoogle} className='btn bg-indigo-800 border-indigo-900 text-slate-200 hover:text-black text-lg font-semibold'><Link> Google</Link></button>
-                    <button className='btn bg-indigo-800 border-indigo-900 text-slate-200 hover:text-black text-lg font-semibold'><Link> GitHub</Link></button>
-                </div>
-
             </div>
-
         </div>
     );
 };

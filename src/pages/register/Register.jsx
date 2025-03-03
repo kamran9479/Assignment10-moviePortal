@@ -1,93 +1,66 @@
-
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../authProvider/AuthProvider';
 
-
 const Register = () => {
-    const { handleRegister,manageProfile } = useContext(authContext)
-
+    const { handleRegister, manageProfile } = useContext(authContext);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
+
     const handleSubmit = (e) => {
+        e.preventDefault();
+        setError('');
 
-        e.preventDefault()
-        const form = e.target
-        const name = form.name.value
-        const photo = form.photo.value
-        const email = form.email.value
-        const password = form.password.value
-        const data = { email, password }
-        console.log(data)
-        handleRegister(email, password)
-        .then(result =>{
-            manageProfile({displayName : name, photoURL : photo})
-            .then(()=>{
-                navigate("/")
-            })
-            
+        const form = e.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
 
-        })
-            
+        if (!/[A-Z]/.test(password)) {
+            return setError("Password must have at least one uppercase letter.");
+        }
+        if (!/[a-z]/.test(password)) {
+            return setError("Password must have at least one lowercase letter.");
+        }
+        if (password.length < 6) {
+            return setError("Password must be at least 6 characters long.");
+        }
 
-
-
-        // if (!/[A-Z]/.test(password)) {
-        //     return setError("Must have at least one uppercase letter.");
-        // }
-        // if (!/[a-z]/.test(password)) {
-        //     return setError("Must have at least one lowercase letter.");
-        // }
-        // if (password.length < 6) {
-        //     return setError("Password must be at least 6 characters long.");
-        // }
-
+        handleRegister(email, password).then(() => {
+            manageProfile({ displayName: name, photoURL: photo }).then(() => {
+                navigate("/");
+            });
+        });
     };
+
     return (
-        <div className='p-5 mb-8'>
-
-            <div className="w-11/12 rounded-xl md:w-6/12 mx-auto  p-10">
-                <form onSubmit={handleSubmit}>
-                    <h1 className='text-center text-4xl font-bold'>Register Your Account</h1>
-                    <p className='text-center'>Enter your email below to login to your account</p>
+        <div className="flex justify-center items-center p-4">
+            <div className="w-full max-w-md p-6 rounded-lg shadow-md">
+                <h1 className='text-center text-3xl font-bold mb-4'>Register</h1>
+                <p className='text-center text-gray-600 mb-6'>Create an account to get started</p>
+                <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Name</span>
-                        </label>
-                        <input name='name' type="text" placeholder="Name" className="input input-bordered" required />
+                        <label className="label font-medium">Name</label>
+                        <input name='name' type="text" placeholder="Enter your name" className="input input-bordered w-full p-2 rounded border-gray-300" required />
                     </div>
                     <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input name='email' type="email" placeholder="email" className="input input-bordered" required />
+                        <label className="label font-medium">Email</label>
+                        <input name='email' type="email" placeholder="Enter your email" className="input input-bordered w-full p-2 rounded border-gray-300" required />
                     </div>
                     <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Photo-Url</span>
-                        </label>
-                        <input name='photo' type="text" placeholder="URL" className="input input-bordered" required />
+                        <label className="label font-medium">Photo URL</label>
+                        <input name='photo' type="text" placeholder="Enter your photo URL" className="input input-bordered w-full p-2 rounded border-gray-300" required />
                     </div>
                     <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Password</span>
-                        </label>
-                        <input name='password' type="password" placeholder="password" className="input input-bordered" required />
-
+                        <label className="label font-medium">Password</label>
+                        <input name='password' type="password" placeholder="Enter your password" className="input input-bordered w-full p-2 rounded border-gray-300" required />
                     </div>
-                    {/* {
-                        error && <p className='text-red-500'>{error}</p>
-                    } */}
-                    <div className="form-control mt-6">
-                        <button className="btn btn-primary">Register</button>
-                    </div>
-                    <p className='text-center p-2'>Already have an account? <Link className='underline' to='/login'>Login</Link></p>
-
+                    {error && <p className='text-red-500 text-sm mt-2'>{error}</p>}
+                    <button className="w-full btn btn-primary py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition">Register</button>
                 </form>
-
-
-
+                <p className='text-center text-sm mt-4'>Already have an account? <Link className='text-blue-600 underline' to='/login'>Login</Link></p>
             </div>
-
         </div>
     );
 };
