@@ -1,15 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
-import { url } from "../authProvider/AuthProvider";
+import { serverURL } from "../authProvider/AuthProvider";
+
+
 
 
 const MovieCaard = ({ movie, remove }) => {
-
+    
     const navigate = useNavigate()
-
     const handleRemove = (id) => {
-        fetch(`${url}/favmovies/${id}`, {
+        fetch(`${serverURL}/favmovies/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -20,7 +21,7 @@ const MovieCaard = ({ movie, remove }) => {
     };
 
     return (
-        <motion.div whileHover={{scale:1.05}} className="bg-zinc-800 pb-2 text-slate-300 shadow-lg rounded-lg overflow-hidden max-w-sm">
+        <motion.div whileHover={{ scale: 1.05 }} className="bg-zinc-800 pb-2 text-slate-300 shadow-lg rounded-lg overflow-hidden max-w-sm">
             <img src={movie.img} alt={movie?.title} className="w-full h-56 object-fill" />
             <div className="p-2 grid col-span-2">
                 <h2 className="text-xl col-span-2 font-semibold">{movie?.title}</h2>

@@ -11,7 +11,8 @@ import ErrorPage from "../pages/Error/Error";
 import DetailsMovie from "../components/DetailsMovie";
 import FavMovies from "../pages/My Favorite/FavMovies";
 import EditDetails from "../pages/editDetails/EditDetails";
-import { url } from "../authProvider/AuthProvider";
+import { serverURL } from "../authProvider/AuthProvider";
+
 
 
 const router = createBrowserRouter([
@@ -22,17 +23,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch(`${url}/allmovies`)
+        loader: () => fetch(`${serverURL}/allmovies`)
       },
       {
         path: "/allmovies",
         element: <Allmovies></Allmovies>,
-        loader: () => fetch(`${url}/allmovies`)
+        loader: () => fetch(`${serverURL}/allmovies`)
       },
       {
         path: "/details/:id",
         element: <PrivateRoute><DetailsMovie></DetailsMovie></PrivateRoute> ,
-        loader: ({ params }) =>fetch(`${url}/allmovies/${params.id}`)
+        loader: ({ params }) =>fetch(`${serverURL}/allmovies/${params.id}`)
           
       },
       {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       {
         path:'/favMovies',
         element:<PrivateRoute><FavMovies></FavMovies></PrivateRoute>,
-        loader:()=> fetch(`${url}/favmovies`)
+        loader:()=> fetch(`${serverURL}/favmovies`)
       },
       {
         path: "/upcoming",
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
       {
         path:"/details/edit/:id",
         element:<PrivateRoute><EditDetails></EditDetails></PrivateRoute>,
-        loader:async({params})=> fetch(`${url}/allmovies/${params.id}`)
+        loader:async({params})=> fetch(`${serverURL}/allmovies/${params.id}`)
       },
       {
         path: "/login",

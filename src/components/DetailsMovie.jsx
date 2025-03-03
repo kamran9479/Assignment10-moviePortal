@@ -2,10 +2,11 @@ import React from 'react';
 import Swal from 'sweetalert2'
 import { RxVideo } from 'react-icons/rx';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
-import { url } from '../authProvider/AuthProvider';
+import { serverURL } from '../authProvider/AuthProvider';
 
 
 const DetailsMovie = () => {
+   
 
     const navigate = useNavigate()
     const movie = useLoaderData()
@@ -13,7 +14,7 @@ const DetailsMovie = () => {
 
 
     const handleFav = (id) => {
-        fetch(`${url}/favMovies/${id}`, {
+        fetch(`${serverURL}/favMovies/${id}`, {
             method: 'POST',
         })
             .then(res => res.json())
@@ -36,7 +37,7 @@ const DetailsMovie = () => {
             denyButtonText: `Cancel`
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`${url}/allmovies/${id}`, {
+                fetch(`${serverURL}/allmovies/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

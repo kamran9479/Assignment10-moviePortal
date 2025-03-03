@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Heading from '../../components/Heading';
-import { url } from './../../authProvider/AuthProvider';
+import { serverURL } from '../../authProvider/AuthProvider';
+
 
 
 
 const EditDetails = () => {
+    
     const movie = useLoaderData()
     const navigate = useNavigate()
 
@@ -32,7 +34,7 @@ const EditDetails = () => {
             rating: rating,
             summary: summary
         };
-        fetch(`${url}/allMovies/${movie?._id}`, {
+        fetch(`${serverURL}/allMovies/${movie?._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

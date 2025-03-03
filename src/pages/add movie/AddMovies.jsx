@@ -2,8 +2,10 @@
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
 import Swal from 'sweetalert2'
-import { url } from './../../authProvider/AuthProvider';
+import { serverURL } from '../../authProvider/AuthProvider';
+
 const AddMovies = () => {
+    
     const [rating, setRating] = React.useState(null);
 
 
@@ -37,7 +39,7 @@ const AddMovies = () => {
             rating: ratings,
             summary: summary
         }
-        fetch(`${url}/movies`, {
+        fetch(`${serverURL}/movies`, {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

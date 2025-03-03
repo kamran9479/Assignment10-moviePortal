@@ -1,13 +1,11 @@
 import { createContext, useEffect, useState } from 'react';
 import { auth } from './../firebas/firebase.config';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
-
-
-export const url = import.meta.env.VITE_url
-
+export const serverURL = import.meta.env.VITE_url
 export const authContext = createContext()
 const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider()
+    
 
 
     const [loading, setLoading] = useState(true)
@@ -78,7 +76,8 @@ const AuthProvider = ({ children }) => {
         setUser,
         errorMsg,
         loading,
-        manageProfile
+        manageProfile,
+        serverURL
 
     }
 
